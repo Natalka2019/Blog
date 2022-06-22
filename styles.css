@@ -3,6 +3,7 @@
   --secondary-violet-color:#7F00FF;
   --secondary-color: #ffd280;
   --white-color: #FFF;
+  --red-color: rgb(189, 27, 27);
 }
 
 body {
@@ -10,7 +11,7 @@ body {
  background-color: var(--primary-violet-color);
  box-sizing: border-box;
  letter-spacing: .1rem;
- font-family: arial, sans-serif
+ font-family: arial, sans-serif;
 }
 
 .header, .footer {
@@ -29,31 +30,49 @@ body {
 }
 
 .main {
-  padding-top: 50px;
+  padding: 50px 50px 60px 50px;
+
+}
+
+.mainTitle {
+  color: var(--secondary-violet-color);
+  text-align: center;
 }
 
 .postsList {
   list-style-type: none;
+  padding: 0 20px;
 }
 
-.postContainer {
+.post {
+  padding: 5px 20px;
   background-color: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 8px 8px  gray;
+  margin-bottom: 20px;
 }
 
-/* .postUser {
-
+.post__userId {
+  margin-top: 5px;
+  color: var(--secondary-violet-color);
 }
 
-.postId {
-
+.post__id {
+  text-align: right;
+  margin: 0;
+  color: var(--secondary-violet-color);
 }
 
-.postTitle {
-
+.post__title {
+  text-align: center;
+  margin: 0 8px;
 }
 
-.postBody {
+.post__body {
+  margin: 5px;
+}
 
-} */
-
-/* box-shadow: 0 4px 2px -2px gray; */
+.error {
+  color: var(--red-color);
+  text-align: center;
+}
