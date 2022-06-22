@@ -1,3 +1,3 @@
-import PostsList from "./PostsList.js";
+import App from "./components/App.js";
 
-new PostsList();
+new App();
