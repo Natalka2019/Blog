@@ -1,0 +1,59 @@
+:root {
+  --primary-violet-color: #b4b7ff;
+  --secondary-violet-color:#7F00FF;
+  --secondary-color: #ffd280;
+  --white-color: #FFF;
+}
+
+body {
+ margin: 0;
+ background-color: var(--primary-violet-color);
+ box-sizing: border-box;
+ letter-spacing: .1rem;
+ font-family: arial, sans-serif
+}
+
+.header, .footer {
+  background-color: var(--secondary-violet-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  color: var( --white-color);
+}
+
+.footer {
+  bottom: 0;
+}
+
+.main {
+  padding-top: 50px;
+}
+
+.postsList {
+  list-style-type: none;
+}
+
+.postContainer {
+  background-color: var(--white-color);
+}
+
+/* .postUser {
+
+}
+
+.postId {
+
+}
+
+.postTitle {
+
+}
+
+.postBody {
+
+} */
+
+/* box-shadow: 0 4px 2px -2px gray; */
