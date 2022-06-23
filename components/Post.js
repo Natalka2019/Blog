@@ -1,4 +1,4 @@
-export class Post {
+class Post {
 
   constructor ({userId, id, title, body}) {
     this.state = {
@@ -22,3 +22,5 @@ export class Post {
   };
 
 };
+
+export default Post;

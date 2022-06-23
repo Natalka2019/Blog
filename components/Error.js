@@ -1,4 +1,4 @@
-export class Error {
+class CustomError {
 
   constructor (error) {
     this.state = {
@@ -14,3 +14,5 @@ export class Error {
   };
 
 };
+
+export default CustomError;

@@ -1,55 +1,19 @@
 import PostsList from "./PostsList.js";
-import {Error} from "./Error.js";
-import {mockPosts} from '../mockPosts.js';
-
-const allPostsURL = 'https://jsonplaceholder.typicode.com/posts';
-const filteredPostsURL = 'https://jsonplaceholder.typicode.com/posts?userId=';
-
-//const allPostsURL = '#';
+import Form from "./Form.js";
 
 class App {
 
   constructor() {
-    this.state = {
-      allPosts: mockPosts
-    };
-
     this.render();
   }
 
-  async fetchData (URL) {
-    try {
-      const response = await fetch(URL);
-      const data = await response.json();
-
-      this.state.allPosts = [...data]
-
-    } catch (e) {
-      console.log(e);
-
-      const error = new Error('Oooops! Something went wrong. Please, try again later.');
-
-      const postsList = document.querySelector('.postsList');
-
-      postsList.innerHTML = error.render();
-    }
-  };
-
-  async createAllPostsList () {
-    await this.fetchData(allPostsURL);
-    new PostsList(this.state.allPosts);
-  };
-
-  async createFilteredPostsList (userId) {
-    await this.fetchData(`${filteredPostsURL}${userId}`);
-    new PostsList(this.state.allPosts);
-  };
-
   addEventListeners() {
     const input = document.querySelector('.actions__input');
-    const filterButton = document.querySelector('.filterButton');
-    const showAllButton = document.querySelector('.showAllButton');
     const addButton = document.querySelector('.addButton');
+    const modal = document.querySelector('.modalOverlay');
+    const modalCloseButton = document.querySelector('.modalCloseButton');
+    const modalContent = document.querySelector('.modalContent');
+    const formContainer = document.querySelector('.formContainer');
 
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -57,22 +21,30 @@ class App {
       }
     });
 
-    filterButton.addEventListener("click", () => {
-
-      this.createFilteredPostsList(input.value);
-
+    addButton.addEventListener("click", () => {
+      modal.classList.add("showModal");
+      
+      const form = new Form();
+      formContainer.innerHTML = form.render();
+      form.addEventListeners();
     });
 
-    showAllButton.addEventListener("click", () => {
+    modalCloseButton.addEventListener("click", () => {
+      modal.classList.remove("showModal");
+    });
 
-      this.createAllPostsList();
+    modal.addEventListener("click", () => {
+      modal.classList.remove("showModal");
+    });
 
+    modalContent.addEventListener("click", (e) => {
+      e.stopPropagation();
     });
 
   };
 
   render() {
-    this.createAllPostsList();
+    new PostsList();
     this.addEventListeners();
 
   };
