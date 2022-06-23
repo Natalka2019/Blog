@@ -8,18 +8,11 @@ class App {
   }
 
   addEventListeners() {
-    const input = document.querySelector('.actions__input');
     const addButton = document.querySelector('.addButton');
     const modal = document.querySelector('.modalOverlay');
     const modalCloseButton = document.querySelector('.modalCloseButton');
     const modalContent = document.querySelector('.modalContent');
     const formContainer = document.querySelector('.formContainer');
-
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        this.createFilteredPostsList(input.value);
-      }
-    });
 
     addButton.addEventListener("click", () => {
       modal.classList.add("showModal");

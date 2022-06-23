@@ -53,6 +53,12 @@ class PostsList {
   };
 
    addEventListeners () {
+    this.input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        this.createFilteredPostsList(this.input.value);
+      }
+    });
+
     this.filterButton.addEventListener("click", () => {
       this.createFilteredPostsList(this.input.value);
     });
