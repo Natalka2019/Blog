@@ -7,9 +7,8 @@ class CustomError {
   }
 
   render () {
-    const {error} = this.state;
-    
-    return `<p class="error">${error}</p>`
+
+    return `<p class="error">${this.state.error}</p>`
 
   };
 

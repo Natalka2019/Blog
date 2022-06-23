@@ -68,7 +68,7 @@ body {
   margin-top: 10px;
 }
 
-.actions__button, .modalAddButton {
+.actions__button, .modalAddButton, .successButton {
   border: none;
   width: 100px;
   padding: 10px;
@@ -128,8 +128,8 @@ body {
   z-index: 1;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: auto;
   background-color: var(--primary-violet-color);
 }
@@ -139,9 +139,9 @@ body {
 .modalContent {
   background-color: var(--secondary-violet-color);
   color: var(--white-color);
-  margin: 15% auto;
+  margin: 20px auto;
   padding: 20px;
-  width: 80%;
+  width: 90%;
   overflow: hidden;
   max-width: 400px;
   font-size: 20px;
@@ -176,9 +176,14 @@ body {
   cursor: pointer;
 }
 
-.modalAddButton {
+.modalAddButton, .successButton {
   border: 1px solid var(--white-color);
   align-self: flex-end;
+}
+
+.successButton {
+  border: 1px solid var(--white-color);
+  float: right;
 }
 
 

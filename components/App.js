@@ -2,7 +2,7 @@ import PostsList from "./PostsList.js";
 import Form from "./Form.js";
 
 class App {
-
+  
   constructor() {
     this.render();
   }

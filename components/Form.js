@@ -1,5 +1,7 @@
 import PostsList from "./PostsList.js";
 import CustomError from "./Error.js";
+import SuccessModalContent from './SuccessModalContent.js';
+import {formValidation} from '../utilities.js';
 
 const allPostsURL = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -12,24 +14,7 @@ class Form {
       body: ''
     };
 
-    this.modal = document.querySelector('.modalOverlay');
-
     this.render();
-  }
-
-  formValidation (post) {
-
-    let isWithErrors;
-
-    for (let key in post) {
-      if (post[key].trim() === '') {
-        isWithErrors = true;
-      } else {
-        isWithErrors = false;
-      }
-    }
-
-    return isWithErrors;
   }
 
   addEventListeners() {
@@ -52,7 +37,7 @@ class Form {
       }, {});
 
 
-      const isWithErrors = this.formValidation(newPost);
+      const isWithErrors = formValidation(newPost);
 
       if(!isWithErrors) {
         this.state = {
@@ -70,17 +55,19 @@ class Form {
     });
   }
 
+  onPostSuccess () {
+    const modal = document.querySelector('.modalOverlay');
+    modal.classList.remove("showModal");
+
+    new PostsList();
+  }
+
   async postData (URL, post) {
-    
     try {
 
       const response = await fetch(URL, {
         method: 'POST',
-        body: JSON.stringify({
-          title: post.title,
-          body: post.body,
-          userId: post.userId,
-        }),
+        body: JSON.stringify(post),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
@@ -89,9 +76,15 @@ class Form {
       const data = await response.json();
 
       if (data.id) {
-        this.modal.classList.remove("showModal");
+        const successMessage = "Post was successfully created."
+        const successModalContent = new SuccessModalContent(successMessage, this.onPostSuccess);
 
-        new PostsList();
+        const formContainer = document.querySelector('.formContainer');
+
+        formContainer.innerHTML = successModalContent.render();
+
+        successModalContent.addEventListeners();
+
       } else {
         throw new Error('Post was not created. Try again later');
       }
