@@ -57,6 +57,9 @@ class Form {
 
   onPostSuccess () {
     const modal = document.querySelector('.modalOverlay');
+    this.input = document.querySelector('.actions__input');
+
+    this.input.value = '';
     modal.classList.remove("showModal");
 
     new PostsList();
