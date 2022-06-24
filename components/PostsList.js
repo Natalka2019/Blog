@@ -64,6 +64,7 @@ class PostsList {
     });
 
     this.showAllButton.addEventListener("click", () => {
+      this.input.value = '';
       this.createAllPostsList();
     });
    }
